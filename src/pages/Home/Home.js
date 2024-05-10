@@ -63,7 +63,6 @@ const Home = () => {
     try {
       // Envoi des informations d'inscription au serveur
       await axios.post('http://localhost:3001/api/utilisateur/seelink', { user_id, titre, url, prix, ville });
-      console.log('lien inséré avec succès !');
     } catch (error) {
       console.error('Erreur lors de l\'inscription :', error);
       // Affichage d'un message d'erreur à l'utilisateur

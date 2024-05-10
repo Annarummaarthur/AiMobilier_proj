@@ -27,7 +27,6 @@ app.post('/api/utilisateur', async (req, res) => {
                 console.log(err);
                 return res.status(500).send('Erreur lors de l\'insertion de l\'utilisateur');
             }
-            console.log("Utilisateur inséré avec succès !");
             return res.status(200).send('Utilisateur inséré avec succès');
         });
     } catch (error) {
@@ -51,7 +50,6 @@ app.post('/api/utilisateur/connexion', async (req, res) => {
             const passwordMatch = await bcrypt.compare(password, user.password);
 
             if (passwordMatch) {
-                console.log("Connexion réussie !");
                 return res.status(200).json(user);
             } else {
                 return res.status(401).send('Email ou mot de passe incorrect');
@@ -63,33 +61,6 @@ app.post('/api/utilisateur/connexion', async (req, res) => {
     });
 });
 
-app.get('/api/utilisateurs', (req, res) => {
-    const selectQuery = `SELECT * FROM utilisateur`;
-    pool.query(selectQuery, function(err, result) {
-        if (err) {
-            console.log(err);
-            return res.status(500).send('Erreur lors de la récupération des utilisateurs');
-        }
-        console.log("Utilisateurs récupérés avec succès !");
-        return res.status(200).json(result);
-    });
-});
-
-app.delete('/api/utilisateur/del/:userid', (req, res) => {
-    const userid = req.params.userid;
-    const deletionQuery = `DELETE FROM utilisateur WHERE id = ?`;
-    pool.query(deletionQuery, [userid], function(err, result) {
-        if (err) {
-            console.log(err);
-            return res.status(500).send('Erreur lors de la suppression de l\'utilisateur');
-        }
-        console.log("Utilisateur supprimé avec succès !");
-        return res.status(200).send('Utilisateur supprimé avec succès');
-    });
-});
-
-
-
 app.post('/api/utilisateur/seelink', async (req, res) => {
     const { user_id, titre, url, prix, ville} = req.body;
     try {
@@ -99,13 +70,27 @@ app.post('/api/utilisateur/seelink', async (req, res) => {
                 console.log(err);
                 return res.status(500).send('Erreur lors de l\'insertion du lien');
             }
-            console.log("lien inséré avec succès !");
             return res.status(200).send('lien inséré avec succès');
         });
     } catch (error) {
         return res.status(500).send('Erreur lors du lien');
     }
 });
+
+app.get('/api/utilisateur/getlink', async (req, res) => {
+    const user_id = req.query.user_id;
+    const selectQuery = `SELECT * FROM links WHERE user_id = ?`;
+    pool.query(selectQuery, [user_id], function(err, result) {
+        if (err) {
+            console.log(err);
+            return res.status(500).send('Erreur lors de la récupération des liens');
+        }
+        return res.status(200).json(result);
+    });
+});
+
+
+
 
 
 

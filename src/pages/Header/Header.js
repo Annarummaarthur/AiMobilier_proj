@@ -1,4 +1,3 @@
-// Header.js
 import React, { useState, useEffect } from 'react';
 import './Header.css';
 import logo from '../../image/AIMobilierblanc.png';
@@ -27,7 +26,9 @@ const Header = () => {
     <>
       <header>
         <div className="logo-container">
-          <img src={logo} alt="Logo" className="logo" />
+          <a href="/">
+            <img src={logo} alt="Logo" className="logo" />
+          </a>
         </div>
         <h1>AI MOBILIER</h1>
         {isLoggedIn && (
