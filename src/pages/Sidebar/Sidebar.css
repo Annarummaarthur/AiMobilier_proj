@@ -1,0 +1,54 @@
+/* Sidebar.css */
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -300px; /* Déplace le sidebar hors de l'écran */
+  width: 300px;
+  height: 100%;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transition: right 0.3s ease; /* Ajoute une transition fluide pour l'ouverture et la fermeture */
+}
+
+.sidebar.open {
+  right: 0; /* Affiche le sidebar à droite de l'écran */
+}
+
+.close-button {
+  top: 10px;
+  right: 30px;
+  font-size: 20px;
+  cursor: pointer;
+  width: 70%;
+}
+
+.sidebar-content {
+  padding: 20px;
+  height: 100%;
+}
+
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+}
+
+.sidebar-menu li {
+    margin-bottom: 10px;
+}
+
+.sidebar-menu li a {
+  text-decoration: none;
+  color: #333;
+}
+
+.sidebar-menu li button {
+  background-color: transparent;
+  color: #333;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}

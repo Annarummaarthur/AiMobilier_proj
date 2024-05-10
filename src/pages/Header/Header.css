@@ -1,0 +1,46 @@
+header {
+  position: relative;
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  overflow: hidden;
+  height: 100px;
+}
+
+.logo-container {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.logo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+h1 {
+  margin: 0;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform:translate(-50%, -50%);
+}
+
+
+/* Header.css */
+
+.sidebar-toggle-button {
+  cursor: pointer;
+  width: 70px; /* Ajustez la largeur selon vos besoins */
+  height: auto; /* Réglez la hauteur automatiquement pour maintenir les proportions de l'image */
+  margin-left: auto; /* Déplacez l'image vers la droite pour qu'elle soit alignée avec le logo */
+  margin-right: 20px; /* Marge à droite pour espacer l'image du titre */
+  position: absolute;
+  right: 3%;
+  top: 50%;
+  transform: translate(50%, -50%);
+  filter: invert(100%); /* Inverser les couleurs pour rendre l'image blanche */
+}
