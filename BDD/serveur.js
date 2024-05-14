@@ -78,8 +78,9 @@ app.post('/api/utilisateur/seelink', async (req, res) => {
 });
 
 app.get('/api/utilisateur/getlink', async (req, res) => {
-    const user_id = req.query.user_id;
-    const selectQuery = `SELECT * FROM links WHERE user_id = ?`;
+    const user_id = req.query.user_id; // Récupérer user_id depuis les paramètres de la requête
+    console.log(user_id)
+    const selectQuery = `SELECT * FROM links WHERE user_id = ?`; // Utiliser user_id dans la requête SQL si nécessaire
     pool.query(selectQuery, [user_id], function(err, result) {
         if (err) {
             console.log(err);
@@ -88,6 +89,7 @@ app.get('/api/utilisateur/getlink', async (req, res) => {
         return res.status(200).json(result);
     });
 });
+
 
 
 
