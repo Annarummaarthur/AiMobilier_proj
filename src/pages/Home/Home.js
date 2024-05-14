@@ -47,7 +47,6 @@ const Home = () => {
       country: selectedCountry
     })
       .then((response) => {
-        console.log('Réponse des villes:', response.data);
         setScrapedData(response.data);
       })
       .catch((error) => {

@@ -13,9 +13,7 @@ const Liens = () => {
   const fetchLiens = async () => {
     try {
       const user_id = localStorage.getItem('userid');
-      const response = await axios.get('http://localhost:3001/api/utilisateur/getlink');
-      console.log(user_id)
-      console.log(response.data)
+      const response = await axios.get(`http://localhost:3001/api/utilisateur/getlink?user_id=${user_id}`);
       setLiens(response.data);
       setLinksLoading(false);
     } catch (error) {
@@ -23,6 +21,7 @@ const Liens = () => {
       setLinksLoading(false);
     } 
   };
+  
 
   const handleClick = (url) => {
     window.open(url, '_blank');
